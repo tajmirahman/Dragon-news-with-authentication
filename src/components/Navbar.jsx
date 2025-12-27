@@ -2,13 +2,14 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import userIcon from "../assets/user.png";
 import { AuthContext } from "../provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
   const handleLogOut = () => {
     console.log("user trying to LogOut");
     logOut()
       .then(() => {
-        alert("You Logged Out successfully");
+        toast.success('Logut Successful!');
       })
       .catch((error) => {
         console.log(error);
@@ -16,7 +17,6 @@ const Navbar = () => {
   };
   return (
     <div className="flex justify-between items-center">
-      <div className="">{user && user.email}</div>
       <div className="nav flex gap-5 text-accent">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About</NavLink>
@@ -38,7 +38,25 @@ const Navbar = () => {
           </Link>
         )}
       </div>
+
+        {/* Toaster should be at top level */}
+      <Toaster 
+        position="top-right" 
+        reverseOrder={false}
+        toastOptions={{
+          // Default options
+          className: '',
+          duration: 3000,
+          style: {
+            background: '#333',
+            color: '#fff',
+          },
+        }}
+      />
+
     </div>
+
+    
   );
 };
 
