@@ -12,7 +12,8 @@ const NewsDetailsCard = ({ news }) => {
       />
       <h2 className="text-2xl">{news.title}</h2>
 
-      <p>{news.details}</p>
+      <p className="text-justify">{news.details}</p>
+
       <Link className="btn btn-secondary" to={`/category/${news.category_id}`}>
         {" "}
         Back to Category
