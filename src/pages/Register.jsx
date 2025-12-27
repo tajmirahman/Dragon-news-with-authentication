@@ -1,19 +1,22 @@
 import React, { use, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
+import { FaGithub, FaGooglePlusG } from "react-icons/fa";
 
 const Register = () => {
   const { createUser, setUser, updateUser } = use(AuthContext);
   const [nameError, setNameError] = useState("");
-
   const navigate = useNavigate();
 
+
   const handleRegister = (e) => {
+
     e.preventDefault();
     console.log(e.target);
     const form = e.target;
     const name = form.name.value;
-    if (name.length < 5) {
+    if (name.length < 4) {
       setNameError("Name should be more then 5 character");
       return;
     } else {
@@ -26,11 +29,12 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        // console.log(user);
+        console.log(user);
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo });
             navigate("/");
+            toast.success('Login Successful!');
           })
           .catch((error) => {
             console.log(error);
@@ -45,7 +49,7 @@ const Register = () => {
       });
   };
   return (
-    <div className="flex justify-center min-h-screen items-center">
+    <div className="flex justify-center items-center">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
         <h2 className="font-semibold text-2xl text-center">
           Register your account
@@ -105,7 +109,28 @@ const Register = () => {
             </p>
           </fieldset>
         </form>
+
+        
+          <button className="btn"><FaGooglePlusG className="text-2xl" /> Sign Up with Google</button>
+          <button className="btn mt-2"><FaGithub /> Sign Up with Github</button>
+       
+
       </div>
+
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          // Default options
+          className: '',
+          duration: 3000,
+          style: {
+            background: '#333',
+            color: '#fff',
+          },
+        }}
+      />
+
     </div>
   );
 };

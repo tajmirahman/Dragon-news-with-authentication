@@ -13,6 +13,7 @@ const Navbar = () => {
       })
       .catch((error) => {
         console.log(error);
+        // toast.error(error.code);
       });
   };
   return (
@@ -39,9 +40,9 @@ const Navbar = () => {
         )}
       </div>
 
-        {/* Toaster should be at top level */}
-      <Toaster 
-        position="top-right" 
+      {/* Toaster should be at top level */}
+      <Toaster
+        position="top-right"
         reverseOrder={false}
         toastOptions={{
           // Default options
@@ -56,7 +57,7 @@ const Navbar = () => {
 
     </div>
 
-    
+
   );
 };
 

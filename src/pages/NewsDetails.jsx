@@ -4,15 +4,19 @@ import RighAside from "../components/homelayout/RighAside";
 import NewsDetailsCard from "../components/NewsDetailsCard";
 import { useLoaderData, useParams } from "react-router";
 
+
 const NewsDetails = () => {
   const data = useLoaderData();
   const { id } = useParams();
   const [news, setNews] = useState({});
   //   console.log(data, id, news);
 
+
+
   useEffect(() => {
     const newsDetails = data.find((singleNews) => singleNews.id == id);
     setNews(newsDetails);
+
   }, [data, id]);
   return (
     <div>
@@ -28,6 +32,10 @@ const NewsDetails = () => {
           <RighAside></RighAside>
         </aside>
       </main>
+
+      {/* Toaster should be at top level */}
+
+
     </div>
   );
 };
