@@ -5,7 +5,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { FaGithub, FaGooglePlusG } from "react-icons/fa";
 
 const Register = () => {
-  const { createUser, setUser, updateUser } = use(AuthContext);
+  const { createUser, setUser, updateUser, googleLogin } = use(AuthContext);
+
   const [nameError, setNameError] = useState("");
   const navigate = useNavigate();
 
@@ -48,6 +49,18 @@ const Register = () => {
         // ..
       });
   };
+
+   //handle google Login button
+
+    const handleGoogle = () => {
+      googleLogin()
+      .then(()=>{
+        navigate("/");
+      })
+      .then(()=>{})
+    }
+
+
   return (
     <div className="flex justify-center items-center">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
@@ -110,10 +123,11 @@ const Register = () => {
           </fieldset>
         </form>
 
-        
-          <button className="btn"><FaGooglePlusG className="text-2xl" /> Sign Up with Google</button>
-          <button className="btn mt-2"><FaGithub /> Sign Up with Github</button>
-       
+
+        <button onClick={handleGoogle} className="btn"><FaGooglePlusG className="text-2xl" /> Sign Up with Google</button>
+
+        <button className="btn mt-2"><FaGithub /> Sign Up with Github</button>
+
 
       </div>
 
