@@ -8,15 +8,15 @@ import RighAside from "../components/homelayout/RighAside";
 
 const HomeLayout = () => {
 
-  const data= useLoaderData();
-  console.log(data);
+  const news= useLoaderData();
+
 
   return (
     <div>
       <header>
         <Header></Header>
         <section className="w-11/12 mx-auto my-3">
-          <LatestNews></LatestNews>
+          <LatestNews news={news}></LatestNews>
         </section>
         <nav className="w-11/12 mx-auto my-3">
           <Navbar></Navbar>
