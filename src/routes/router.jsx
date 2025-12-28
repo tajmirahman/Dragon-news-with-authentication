@@ -8,6 +8,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import NewsDetails from "../pages/NewsDetails";
 import PrivateRoute from "../provider/PrivateRoute";
 import About from "../components/About";
+import Norplay from "../pages/Norplay";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
   {
     path: "/career",
     element: <h2>THis news page</h2>,
+  },
+  {
+    path: "/email/norplay",
+    element: <Norplay></Norplay>,
   },
   {
     path: "/*",

@@ -37,7 +37,7 @@ const Login = () => {
   const handleForget=()=>{
     resetPassword(email)
     .then(()=>{
-      console.log('password reset mail send')
+      navigate('/email/norplay');
     })
     .catch(error=>console.log(error.code))
 
