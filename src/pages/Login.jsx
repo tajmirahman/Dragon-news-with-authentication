@@ -5,10 +5,10 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { signIn, } = use(AuthContext);
+  const { signIn, resetPassword } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  const [email, setEmail]=useState('');
 
 
 
@@ -33,6 +33,17 @@ const Login = () => {
         setError(errorCode);
       });
   };
+
+  const handleForget=()=>{
+    resetPassword(email)
+    .then(()=>{
+      console.log('password reset mail send')
+    })
+    .catch(error=>console.log(error.code))
+
+  }
+
+
   return (
     <div className="flex justify-center items-center">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
@@ -49,6 +60,7 @@ const Login = () => {
               className="input"
               placeholder="Email"
               required
+              onChange={(e)=>setEmail(e.target.value)}
             />
             {/* passowrd  */}
             <label className="label">Password</label>
@@ -60,7 +72,7 @@ const Login = () => {
               required
             />
             <div>
-              <a className="link link-hover">Forgot password?</a>
+              <a onClick={handleForget} className="link link-hover">Forgot password?</a>
             </div>
 
             {error && <p className="text-red-400 text-xs">{error}</p>}
