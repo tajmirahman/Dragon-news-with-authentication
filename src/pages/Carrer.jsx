@@ -1,15 +1,15 @@
 import React from 'react';
-import Header from './Header';
+import Header from '../components/Header';
 
-const About = () => {
+const Carrer = () => {
     return (
         <div className='w-11/12 mx-auto'>
             <Header></Header>
             <div>
-                <h1 className='text-center mt-10'>THis is About Page</h1>
+                <h1 className='text-center mt-10'>THis is Career Page</h1>
             </div>
         </div>
     );
 };
 
-export default About;
+export default Carrer;
