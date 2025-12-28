@@ -7,11 +7,13 @@ import Register from "../pages/Register";
 import AuthLayout from "../layouts/AuthLayout";
 import NewsDetails from "../pages/NewsDetails";
 import PrivateRoute from "../provider/PrivateRoute";
+import About from "../components/About";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
+    loader: () => fetch("/news.json"),
     children: [
       {
         path: "",
@@ -48,9 +50,18 @@ const router = createBrowserRouter([
     loader: () => fetch("/news.json"),
   },
   {
+    path: "/about",
+    element: <About></About>,
+  },
+  {
+    path: "/career",
+    element: <h2>THis news page</h2>,
+  },
+  {
     path: "/*",
     element: <h2>Error404</h2>,
   },
+
 ]);
 
 export default router;

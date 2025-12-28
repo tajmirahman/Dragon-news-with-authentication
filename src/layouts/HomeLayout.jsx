@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Outlet, useLoaderData } from "react-router";
 import Header from "../components/Header";
 import LatestNews from "../components/LatestNews";
 import Navbar from "../components/Navbar";
@@ -7,6 +7,10 @@ import LeftAside from "../components/homelayout/LeftAside";
 import RighAside from "../components/homelayout/RighAside";
 
 const HomeLayout = () => {
+
+  const data= useLoaderData();
+  console.log(data);
+
   return (
     <div>
       <header>
